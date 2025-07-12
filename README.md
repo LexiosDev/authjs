@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Login com Auth.js (Google)
 
-## Getting Started
+Pequeno sistema de login usando [Auth.js](https://authjs.dev/) com autenticação via Google, desenvolvido com [Next.js](https://nextjs.org/) e estilizado com [Tailwind CSS](https://tailwindcss.com/).
 
-First, run the development server:
+## Tecnologias
+
+- Next.js
+- Tailwind CSS
+- Auth.js (NextAuth)
+
+## Funcionalidades
+
+- Login com conta Google
+- Sessão autenticada com persistência
+- Proteção de rotas
+
+## Instalação
 
 ```bash
+# Instalar dependências
+npm install
+
+# Rodar o projeto em modo de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Configuração
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Crie um arquivo `.env.local` na raiz do projeto com as seguintes variáveis:
 
-## Learn More
+```env
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+NEXTAUTH_SECRET=uma_chave_secreta
+NEXTAUTH_URL=http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+> Obs: Você pode gerar o `NEXTAUTH_SECRET` com `openssl rand -base64 32` ou usando um gerador online.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura Básica
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/pages/api/auth/[...nextauth].ts` – Configuração do Auth.js com provedor Google
+- `/pages/index.tsx` – Página inicial
+- `/pages/protected.tsx` – Exemplo de rota protegida
+- `/components/Navbar.tsx` – Exibe login/logout e informações da sessão
 
-## Deploy on Vercel
+## Licença
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
